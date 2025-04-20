@@ -20,6 +20,8 @@ gcc shell.c ./lib/linenoise.c -o shell
 #define TOKEN_SEP " \t"
 #define PATH_MAX 4096
 
+#define CALC_DIR "/mnt/c/users/jauhi/documents/projekt/unix-shell/tools/calc"
+
 char CWD[PATH_MAX]; // Cur. working directory
 
 
@@ -39,7 +41,7 @@ int s_execute(char *cmd, char **cmd_args) {
         pid_t pid = fork();
         if (pid == 0) {
             // Child process (using fork): Executes program
-            execl("/mnt/c/TEST/Shell/tools/calc", "./calc", NULL);
+            execl(CALC_DIR, "./calc", NULL);
             perror("!execl failed");
             exit(1);
         } else if (pid < 0) {
